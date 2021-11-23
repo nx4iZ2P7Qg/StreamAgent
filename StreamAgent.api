@@ -1,0 +1,41 @@
+type Request {
+	Name string `path:"name,options=you|me"`
+}
+
+type Response {
+	Message string `json:"message"`
+}
+
+type DvrRequest {
+	Action   string `json:"action"`
+	ClientId int    `json:"client_id"`
+	Ip       string `json:"ip"`
+	Vhost    string `json:"vhost"`
+	App      string `json:"app"`
+	Stream   string `json:"stream"`
+	Param    string `json:"param"`
+	Cwd      string `json:"cwd"`
+	File     string `json:"file"`
+}
+
+type Dvr {
+	ClientId    int    `json:"client_id"`
+	Ip          string `json:"ip"`
+	Vhost       string `json:"vhost"`
+	App         string `json:"app"`
+	Stream      string `json:"stream"`
+	Param       string `json:"param"`
+	Cwd         string `json:"cwd"`
+	File        string `json:"file"`
+	Base        string `json:"base"`
+	ContentName string `json:"content_name"`
+}
+
+type DvrResponse {
+	ErrorCode int `json:"error_code"`
+}
+
+service agent-api {
+	@handler DvrHandler
+	post /api/v1/srs/dvr (DvrRequest) returns (DvrResponse);
+}
