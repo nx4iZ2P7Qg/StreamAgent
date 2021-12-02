@@ -6,6 +6,25 @@ type Response {
 	Message string `json:"message"`
 }
 
+type RoleInfo {
+	RoleName string `json:"roleName"`
+	Value    string `json:"value"`
+}
+
+type LoginRequest {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type LoginResponse {
+	Roles    []RoleInfo `json:"roles"`
+	UserId   string     `json:"userId"`
+	Username string     `json:"username"`
+	Token    string     `json:"token"`
+	RealName string     `json:"realName"`
+	Desc     string     `json:"desc"`
+}
+
 type DvrRequest {
 	Action   string `json:"action"`
 	ClientId int    `json:"client_id"`
@@ -35,7 +54,10 @@ type DvrResponse {
 	ErrorCode int `json:"error_code"`
 }
 
-service agent-api {
+service streamagent-api {
 	@handler DvrHandler
 	post /api/v1/srs/dvr (DvrRequest) returns (DvrResponse);
+	
+	@handler LoginHandler
+	post /api/v1/login (LoginRequest) returns (LoginResponse);
 }

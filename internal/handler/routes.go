@@ -17,6 +17,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/v1/srs/dvr",
 				Handler: DvrHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/v1/login",
+				Handler: LoginHandler(serverCtx),
+			},
 		},
 	)
 }

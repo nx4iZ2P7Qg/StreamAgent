@@ -11,6 +11,25 @@ type Response struct {
 	Message string `json:"message"`
 }
 
+type RoleInfo struct {
+	RoleName string `json:"roleName"`
+	Value    string `json:"value"`
+}
+
+type LoginRequest struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type LoginResponse struct {
+	Roles    []RoleInfo `json:"roles"`
+	UserId   string     `json:"userId"`
+	Username string     `json:"username"`
+	Token    string     `json:"token"`
+	RealName string     `json:"realName"`
+	Desc     string     `json:"desc"`
+}
+
 type DvrRequest struct {
 	Action   string `json:"action"`
 	ClientId int    `json:"client_id"`

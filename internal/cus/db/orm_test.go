@@ -1,8 +1,8 @@
 package db
 
 import (
-	"agent/internal/cus/config"
-	"agent/internal/types"
+	"StreamAgent/internal/cus/config"
+	"StreamAgent/internal/types"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	"testing"
@@ -27,15 +27,15 @@ func Test(t *testing.T) {
 
 	// 添加数据
 	db.Create(&types.Dvr{
-		ClientId: 683,
-		Ip: "100.100.100.100",
-		Vhost: "srs_vhost_anime",
-		App: "live",
-		Stream: "secret",
-		Param: "?token=xxx&salt=yyy",
-		Cwd: "/usr/local/srs",
-		File: "./objs/nginx/html/live/livestream.1420254068776.flv",
-		Base: "livestream.1420254068776.flv",
+		ClientId:    683,
+		Ip:          "100.100.100.100",
+		Vhost:       "srs_vhost_anime",
+		App:         "live",
+		Stream:      "secret",
+		Param:       "?token=xxx&salt=yyy",
+		Cwd:         "/usr/local/srs",
+		File:        "./objs/nginx/html/live/livestream.1420254068776.flv",
+		Base:        "livestream.1420254068776.flv",
 		ContentName: "2021年7月电影推荐",
 	})
 

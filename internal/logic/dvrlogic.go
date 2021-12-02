@@ -33,7 +33,7 @@ func NewDvrLogic(ctx context.Context, svcCtx *svc.ServiceContext) DvrLogic {
 func (l *DvrLogic) Dvr(req types.DvrRequest) (*types.DvrResponse, error) {
 	logx.Infof("req = %s\n", req)
 
-	// todo df newName 来自于用户开始直播的节目名称，需要从数据库中取出
+	// todo df contentName 来自于用户开始直播的节目名称，需要从数据库中取出
 	contentName := "contentName"
 
 	// 挂载到 pod 的 dvr nfs 路径，用以上传及删除 dvr 文件
