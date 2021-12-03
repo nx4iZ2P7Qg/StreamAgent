@@ -3,10 +3,10 @@ package types
 
 import "github.com/jinzhu/gorm"
 
-type Request struct {
+type Req struct {
 }
 
-type Response struct {
+type Res struct {
 }
 
 type RoleInfo struct {

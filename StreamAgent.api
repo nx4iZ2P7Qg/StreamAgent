@@ -1,7 +1,7 @@
-type Request {
+type Req {
 }
 
-type Response {
+type Res {
 }
 
 type RoleInfo {
@@ -75,6 +75,9 @@ service streamagent-api {
 	@handler LoginHandler
 	post /api/v1/login (LoginReq) returns (LoginRes);
 	
-	@handler getUserInfo
+	@handler GetUserInfo
 	get  /api/v1/getUserInfo (GetUserInfoReq) returns (GetUserInfoRes)
+	
+	@handler Logout
+	get  /api/v1/logout (Req) returns (Res)
 }
