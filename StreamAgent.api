@@ -1,9 +1,7 @@
 type Request {
-	Name string `path:"name,options=you|me"`
 }
 
 type Response {
-	Message string `json:"message"`
 }
 
 type RoleInfo {
@@ -11,12 +9,12 @@ type RoleInfo {
 	Value    string `json:"value"`
 }
 
-type LoginRequest {
+type LoginReq {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
 
-type LoginResponse {
+type LoginRes {
 	Roles    []RoleInfo `json:"roles"`
 	UserId   string     `json:"userId"`
 	Username string     `json:"username"`
@@ -25,7 +23,23 @@ type LoginResponse {
 	Desc     string     `json:"desc"`
 }
 
-type DvrRequest {
+type GetUserInfoReq {
+	T string `form:"_t"`
+}
+
+type GetUserInfoRes {
+	UserId   string     `json:"userId"`
+	Username string     `json:"username"`
+	RealName string     `json:"realName"`
+	Avatar   string     `json:"avatar"`
+	Desc     string     `json:"desc"`
+	Password string     `json:"password"`
+	Token    string     `json:"token"`
+	HomePath string     `json:"homePath"`
+	Roles    []RoleInfo `json:"roles"`
+}
+
+type DvrReq {
 	Action   string `json:"action"`
 	ClientId int    `json:"client_id"`
 	Ip       string `json:"ip"`
@@ -50,14 +64,17 @@ type Dvr {
 	ContentName string `json:"content_name"`
 }
 
-type DvrResponse {
+type DvrRes {
 	ErrorCode int `json:"error_code"`
 }
 
 service streamagent-api {
 	@handler DvrHandler
-	post /api/v1/srs/dvr (DvrRequest) returns (DvrResponse);
+	post /api/v1/srs/dvr (DvrReq) returns (DvrRes);
 	
 	@handler LoginHandler
-	post /api/v1/login (LoginRequest) returns (LoginResponse);
+	post /api/v1/login (LoginReq) returns (LoginRes);
+	
+	@handler getUserInfo
+	get  /api/v1/getUserInfo (GetUserInfoReq) returns (GetUserInfoRes)
 }

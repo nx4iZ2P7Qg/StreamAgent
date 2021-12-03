@@ -23,9 +23,9 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) LoginLogic {
 	}
 }
 
-func (l *LoginLogic) Login(req types.LoginRequest) (*types.LoginResponse, error) {
+func (l *LoginLogic) Login(req types.LoginReq) (*types.LoginRes, error) {
 	// todo df 需要添加逻辑
-	return &types.LoginResponse{
+	return &types.LoginRes{
 		Roles: []types.RoleInfo{
 			{
 				RoleName: "Super Admin",

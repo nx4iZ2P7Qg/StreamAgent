@@ -4,11 +4,9 @@ package types
 import "github.com/jinzhu/gorm"
 
 type Request struct {
-	Name string `path:"name,options=you|me"`
 }
 
 type Response struct {
-	Message string `json:"message"`
 }
 
 type RoleInfo struct {
@@ -16,12 +14,12 @@ type RoleInfo struct {
 	Value    string `json:"value"`
 }
 
-type LoginRequest struct {
+type LoginReq struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
 
-type LoginResponse struct {
+type LoginRes struct {
 	Roles    []RoleInfo `json:"roles"`
 	UserId   string     `json:"userId"`
 	Username string     `json:"username"`
@@ -30,7 +28,23 @@ type LoginResponse struct {
 	Desc     string     `json:"desc"`
 }
 
-type DvrRequest struct {
+type GetUserInfoReq struct {
+	T string `form:"_t"`
+}
+
+type GetUserInfoRes struct {
+	UserId   string     `json:"userId"`
+	Username string     `json:"username"`
+	RealName string     `json:"realName"`
+	Avatar   string     `json:"avatar"`
+	Desc     string     `json:"desc"`
+	Password string     `json:"password"`
+	Token    string     `json:"token"`
+	HomePath string     `json:"homePath"`
+	Roles    []RoleInfo `json:"roles"`
+}
+
+type DvrReq struct {
 	Action   string `json:"action"`
 	ClientId int    `json:"client_id"`
 	Ip       string `json:"ip"`
@@ -56,6 +70,6 @@ type Dvr struct {
 	ContentName string `json:"content_name"`
 }
 
-type DvrResponse struct {
+type DvrRes struct {
 	ErrorCode int `json:"error_code"`
 }

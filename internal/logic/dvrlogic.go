@@ -30,7 +30,7 @@ func NewDvrLogic(ctx context.Context, svcCtx *svc.ServiceContext) DvrLogic {
 	}
 }
 
-func (l *DvrLogic) Dvr(req types.DvrRequest) (*types.DvrResponse, error) {
+func (l *DvrLogic) Dvr(req types.DvrReq) (*types.DvrRes, error) {
 	logx.Infof("req = %s\n", req)
 
 	// todo df contentName 来自于用户开始直播的节目名称，需要从数据库中取出
@@ -80,7 +80,7 @@ func (l *DvrLogic) Dvr(req types.DvrRequest) (*types.DvrResponse, error) {
 		}
 	}
 
-	re := types.DvrResponse{
+	re := types.DvrRes{
 		ErrorCode: 0,
 	}
 	return &re, nil
