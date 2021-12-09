@@ -11,6 +11,7 @@ type Config struct {
 	Ssh      Ssh
 	Dvr      Dvr
 	Minio    Minio
+	Stream   Stream
 }
 
 type Postgres struct {
@@ -38,6 +39,10 @@ type Minio struct {
 	Endpoint        string
 	AccessKeyID     string
 	SecretAccessKey string
+}
+
+type Stream struct {
+	Server string
 }
 
 var C Config

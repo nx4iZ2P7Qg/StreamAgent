@@ -17,6 +17,7 @@ func Test(t *testing.T) {
 
 	// 建表
 	db.Exec(fmt.Sprintf("drop table %s.dvrs", schema))
+	db.Exec(fmt.Sprintf("drop table %s.streams", schema))
 
 	// 指定 schema
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, table string) string {
@@ -24,6 +25,7 @@ func Test(t *testing.T) {
 	}
 
 	db.AutoMigrate(&types.Dvr{})
+	db.AutoMigrate(&types.Stream{})
 
 	// 添加数据
 	db.Create(&types.Dvr{

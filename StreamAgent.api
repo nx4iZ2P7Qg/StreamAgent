@@ -68,6 +68,29 @@ type DvrRes {
 	ErrorCode int `json:"error_code"`
 }
 
+type StartStreamReq {
+	UserId   string `json:"userId"`
+	Category string `json:"category"`
+	Title    string `json:"title"`
+}
+
+type Stream {
+	UserId   string `json:"userId"`
+	Category string `json:"category"`
+	Title    string `json:"title"`
+	Token    string `json:"token"`
+	Status   string `json:"status"`
+}
+
+type StartStreamRes {
+	Server string `json:"server"`
+	Key    string `json:"key"`
+}
+
+type StopStreamReq {
+	UserId string `json:"userId"`
+}
+
 service streamagent-api {
 	@handler DvrHandler
 	post /api/v1/srs/dvr (DvrReq) returns (DvrRes);
@@ -75,9 +98,15 @@ service streamagent-api {
 	@handler LoginHandler
 	post /api/v1/login (LoginReq) returns (LoginRes);
 	
-	@handler GetUserInfo
+	@handler GetUserInfoHandler
 	get  /api/v1/getUserInfo (GetUserInfoReq) returns (GetUserInfoRes)
 	
-	@handler Logout
+	@handler LogoutHandler
 	get  /api/v1/logout (Req) returns (Res)
+	
+	@handler StartStreamHandler
+	put /api/v1/stream/start (StartStreamReq) returns (StartStreamRes)
+	
+	@handler StopStreamHandler
+	put /api/v1/stream/stop (StopStreamReq) returns (Res)
 }

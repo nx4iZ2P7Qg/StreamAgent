@@ -32,6 +32,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/v1/logout",
 				Handler: LogoutHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/api/v1/stream/start",
+				Handler: StartStreamHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/api/v1/stream/stop",
+				Handler: StopStreamHandler(serverCtx),
+			},
 		},
 	)
 }

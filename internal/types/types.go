@@ -73,3 +73,27 @@ type Dvr struct {
 type DvrRes struct {
 	ErrorCode int `json:"error_code"`
 }
+
+type StartStreamReq struct {
+	UserId   string `json:"userId"`
+	Category string `json:"category"`
+	Title    string `json:"title"`
+}
+
+type Stream struct {
+	gorm.Model `json:"-,optional"`
+	UserId     string `json:"userId"`
+	Category   string `json:"category"`
+	Title      string `json:"title"`
+	Token      string `json:"token"`
+	Status     string `json:"status"`
+}
+
+type StartStreamRes struct {
+	Server string `json:"server"`
+	Key    string `json:"key"`
+}
+
+type StopStreamReq struct {
+	UserId string `json:"userId"`
+}

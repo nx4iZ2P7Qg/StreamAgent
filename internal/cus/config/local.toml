@@ -23,3 +23,7 @@ delete = true
 endpoint = "192.168.13.241:9000"
 accessKeyID = "minio"
 secretAccessKey = "minio123"
+
+
+[stream]
+server = "rtmp://192.168.10.252:31857/live"
