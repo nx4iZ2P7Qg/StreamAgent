@@ -42,6 +42,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/v1/stream/stop",
 				Handler: StopStreamHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/v1/srs/onConnect",
+				Handler: VerifyConnectStreamHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/v1/srs/onPush",
+				Handler: VerifyPushStreamHandler(serverCtx),
+			},
 		},
 	)
 }

@@ -91,6 +91,27 @@ type StopStreamReq {
 	UserId string `json:"userId"`
 }
 
+type VerifyConnectStreamReq {
+	Action   string `json:"action"`
+	ClientId int    `json:"client_id"`
+	Ip       string `json:"ip"`
+	Vhost    string `json:"vhost"`
+	App      string `json:"app"`
+	TcUrl    string `json:"tcUrl"`
+	PageUrl  string `json:"pageUrl"`
+}
+
+type VerifyPushStreamReq {
+	Action   string `json:"action"`
+	ClientId int    `json:"client_id"`
+	Ip       string `json:"ip"`
+	Vhost    string `json:"vhost"`
+	App      string `json:"app"`
+	TcUrl    string `json:"tcUrl"`
+	Stream   string `json:"stream"`
+	Param    string `json:"param"`
+}
+
 service streamagent-api {
 	@handler DvrHandler
 	post /api/v1/srs/dvr (DvrReq) returns (DvrRes);
@@ -109,4 +130,10 @@ service streamagent-api {
 	
 	@handler StopStreamHandler
 	put /api/v1/stream/stop (StopStreamReq) returns (Res)
+	
+	@handler VerifyConnectStreamHandler
+	post /api/v1/srs/onConnect (VerifyConnectStreamReq) returns (Res)
+	
+	@handler VerifyPushStreamHandler
+	post /api/v1/srs/onPush (VerifyPushStreamReq) returns (Res)
 }

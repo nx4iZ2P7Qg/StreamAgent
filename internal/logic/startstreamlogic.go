@@ -34,6 +34,8 @@ func (l *StartStreamLogic) StartStream(req types.StartStreamReq) (*types.StartSt
 	stream.Category = req.Category
 	stream.Title = req.Title
 	stream.Status = "started"
+	// todo df 生成 token
+	stream.Token = "fakeToken"
 
 	dbc := db.GetDBC()
 	var streams []types.Stream
@@ -48,6 +50,6 @@ func (l *StartStreamLogic) StartStream(req types.StartStreamReq) (*types.StartSt
 	}
 	return &types.StartStreamRes{
 		Server: config.C.Stream.Server,
-		Key:    fmt.Sprintf("/secret?token=%v", "fakeToken1"),
+		Key:    fmt.Sprintf("/secret?token=%v", stream.Token),
 	}, nil
 }

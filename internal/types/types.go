@@ -97,3 +97,24 @@ type StartStreamRes struct {
 type StopStreamReq struct {
 	UserId string `json:"userId"`
 }
+
+type VerifyConnectStreamReq struct {
+	Action   string `json:"action"`
+	ClientId int    `json:"client_id"`
+	Ip       string `json:"ip"`
+	Vhost    string `json:"vhost"`
+	App      string `json:"app"`
+	TcUrl    string `json:"tcUrl"`
+	PageUrl  string `json:"pageUrl"`
+}
+
+type VerifyPushStreamReq struct {
+	Action   string `json:"action"`
+	ClientId int    `json:"client_id"`
+	Ip       string `json:"ip"`
+	Vhost    string `json:"vhost"`
+	App      string `json:"app"`
+	TcUrl    string `json:"tcUrl"`
+	Stream   string `json:"stream"`
+	Param    string `json:"param"`
+}
